@@ -1,3 +1,4 @@
+'use client'
 import {useRef} from 'react'
 import emailjs from '@emailjs/browser';
 
@@ -23,10 +24,11 @@ const ContactForm = ()=>{
     
 
     return (
-            <div className="  h-32  items-center  justify-center">
-                <h6 className='flex'> Lets Connect: </h6>
+            <div className="  min-h-[90vh] flex flex-col justify-center items-center" id='contact'>
+                
+                <h1 className="flex text-2xl font-bold justify-center mb-4 text-white">Lets connect:</h1>
                 <div className="h-auto rounded-lg shadow-lg flex  w-full max-w-sm justify-center">
-                    {/* <h1 className="text-2xl font-bold text-gray-800 mb-6">Contact Us</h1> */}
+                    {/* <h1 className="text-2xl font-bold text-gray-800 mb-6">Contact Us</h1>*/}
                     <form ref={form} onSubmit={sendEmail} className='bg-gray-500 rounded-lg p-4'>
                         <div className="mb-4">
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
@@ -40,7 +42,8 @@ const ContactForm = ()=>{
                             <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
                             <textarea id="message" name="message" className="border-2 border-gray-300 p-2 rounded-lg w-full h-32 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Your message" required></textarea>
                         </div>
-                        <button type="submit" className="bg-indigo-500 text-white p-2 rounded-lg font-semibold w-full hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">Lets Build Something Together</button>
+                        {/* <button type="submit" className="bg-blue-500 text-black p-2 rounded-lg font-semibold w-full hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">Lets Build Something Together</button> */}
+                        <button type="submit" className="bg-indigo-600 text-white p-2 rounded-lg font-semibold w-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">Lets Build Something Together</button>
                     </form>
                 </div>
             </div>
