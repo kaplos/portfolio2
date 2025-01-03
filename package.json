@@ -14,8 +14,8 @@
     "ionicons": "^7.4.0",
     "next": "15.0.3",
     "primereact": "^10.8.5",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react": "^18.2.0", 
+    "react-dom": "^18.2.0" ,
     "react-icons": "^5.4.0",
     "react-multi-carousel": "^2.8.5",
     "tailwind-scrollbar": "^3.1.0"
