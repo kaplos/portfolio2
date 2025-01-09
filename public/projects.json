@@ -1,0 +1,59 @@
+
+  [{
+    "id":1,
+    "name":"Tehillim app",
+    "description":"A mobile app that allows users to read Tehillim",
+    "github":"",
+    "languages":["react","js","tailwind"],
+    "more":{
+      "test":"test",
+      "images":["/Tehillim-main.jpeg","/Tehillim-1.jpg","/Tehillim-2.jpg","/Tehillim-3.jpg","/Tehillim-4.jpg"],
+      "descriptions":
+      ["Leveraged a React Native component to efficiently render and display static data.",
+        "Created an interactive app that features dark/light mode, chapter bookmarking, chapter indexing, and language selection.",
+        "Implemented a custom navigation bar that allows users to easily navigate between chapters.",
+        "Added a search functionality to quickly find specific chapters or verses.",
+        "Integrated a local storage solution to save user preferences and bookmarks.",
+        "Designed a responsive UI that adapts to different screen sizes and orientations.",
+        "Included a settings page where users can customize the app's appearance and behavior.",
+        "Optimized the app for performance to ensure smooth scrolling and quick loading times.",
+        "Implemented accessibility features such as text-to-speech and adjustable font sizes."]
+    }
+
+  },
+  {
+    "id":2,
+    "name":"Product Monitor",
+    "description":"A monitor that checks product availability on retail websites",
+    "github":"",
+    "languages":["js"],
+    "more":{
+      "test":"test",
+      "images":["/ProductMonitor-main.png","/ProductMonitor-1.png","/ProductMonitor-2.png"],
+      "descriptions":[
+        "Developed a web scraper to monitor product availability on multiple retail websites using api calls.",
+        "Implemented real-time notifications to alert users when a product becomes available.",
+        "Used discord js to send notifications and control the monitor through discord."
+      ]
+    }
+
+  },
+  {
+    "id":3,
+    "name":"Shopify Store Webpage Design",
+    "description":"A implementation of a webpage design for a Shopify store",
+    "github":"",
+    "languages":[".liquid","html","css"],
+    "more":{
+      "test":"test",
+      "images":["/Shipsure-main.png","/Shipsure-1.png","/Shipsure-2.png"],
+      "descriptions":[
+        "Implemented a custom design for a Shopify store using HTML, CSS, and Liquid.",
+        "Designed a responsive layout that adapts to different screen sizes and orientations.",
+        "Integrated a custom search bar that allows users to quickly find products by name or category.",
+        "Included a contact form that users can fill out to get in touch with the store owner.",
+        "Implemented a newsletter signup form to collect email addresses for marketing purposes."
+      ]
+    }
+  }
+]
