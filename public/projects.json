@@ -1,59 +1,115 @@
-
-  [{
-    "id":1,
-    "name":"Tehillim app",
-    "description":"A mobile app that allows users to read Tehillim",
-    "github":"",
-    "languages":["react","js","tailwind"],
-    "more":{
-      "test":"test",
-      "images":["/Tehillim-main.jpeg","/Tehillim-1.jpg","/Tehillim-2.jpg","/Tehillim-3.jpg","/Tehillim-4.jpg"],
-      "descriptions":
-      ["Leveraged a React Native component to efficiently render and display static data.",
-        "Created an interactive app that features dark/light mode, chapter bookmarking, chapter indexing, and language selection.",
-        "Implemented a custom navigation bar that allows users to easily navigate between chapters.",
-        "Added a search functionality to quickly find specific chapters or verses.",
-        "Integrated a local storage solution to save user preferences and bookmarks.",
-        "Designed a responsive UI that adapts to different screen sizes and orientations.",
-        "Included a settings page where users can customize the app's appearance and behavior.",
-        "Optimized the app for performance to ensure smooth scrolling and quick loading times.",
-        "Implemented accessibility features such as text-to-speech and adjustable font sizes."]
+[
+    {
+        "id": 1,
+        "name": "Tehillim app",
+        "description": "A mobile app that allows users to read Tehillim",
+        "github": "",
+        "languages": ["react", "js", "tailwind"],
+        "more": {
+            "test": "test",
+            "images": [
+                "/Tehillim-main.jpeg",
+                "/Tehillim-1.jpg",
+                "/Tehillim-2.jpg",
+                "/Tehillim-3.jpg",
+                "/Tehillim-4.jpg"
+            ],
+            "descriptions": [
+                "Leveraged a React Native component to efficiently render and display static data.",
+                "Created an interactive app that features dark/light mode, chapter bookmarking, chapter indexing, and language selection.",
+                "Implemented a custom navigation bar that allows users to easily navigate between chapters.",
+                "Added a search functionality to quickly find specific chapters or verses.",
+                "Integrated a local storage solution to save user preferences and bookmarks.",
+                "Designed a responsive UI that adapts to different screen sizes and orientations.",
+                "Included a settings page where users can customize the app's appearance and behavior.",
+                "Optimized the app for performance to ensure smooth scrolling and quick loading times.",
+                "Implemented accessibility features such as text-to-speech and adjustable font sizes."
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "name": "Product Monitor",
+        "description": "A monitor that checks product availability on retail websites",
+        "github": "",
+        "languages": ["js"],
+        "more": {
+            "test": "test",
+            "images": [
+                "/ProductMonitor-main.png",
+                "/ProductMonitor-1.png",
+                "/ProductMonitor-2.png"
+            ],
+            "descriptions": [
+                "Developed a web scraper to monitor product availability on multiple retail websites using api calls.",
+                "Implemented real-time notifications to alert users when a product becomes available.",
+                "Used discord js to send notifications and control the monitor through discord."
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "name": "Shopify Store Webpage Design",
+        "description": "A implementation of a webpage design for a Shopify store",
+        "github": "",
+        "languages": [".liquid", "html", "css"],
+        "more": {
+            "test": "test",
+            "images": [
+                "/Shipsure-main.png",
+                "/Shipsure-1.png",
+                "/Shipsure-2.png"
+            ],
+            "descriptions": [
+                "Implemented a custom design for a Shopify store using HTML, CSS, and Liquid.",
+                "Designed a responsive layout that adapts to different screen sizes and orientations.",
+                "Integrated a custom search bar that allows users to quickly find products by name or category.",
+                "Included a contact form that users can fill out to get in touch with the store owner.",
+                "Implemented a newsletter signup form to collect email addresses for marketing purposes."
+            ]
+        }
+    },
+    {
+        "id": 4,
+        "name": "Coney Power",
+        "description": "A Fullstack website for a gym business",
+        "github": "",
+        "languages": ["js", "tailwind", "nextjs"],
+        "more": {
+            "test": "test",
+            "images": ["/coneypower_main.png", "/coneypower_1.png"],
+            "descriptions": [
+                "Developed a full-stack website for a gym business using Next.js and Tailwind CSS.",
+                "Implemented a responsive design that adapts to different screen sizes and orientations.",
+                "Created a custom booking system that allows users to schedule classes and personal training sessions.",
+                "Integrated a payment gateway using stripe to securely process online payments for memberships and services.",
+                "Included using api routes to handle all aspects of a membership platform and other backend functionality.",
+                "Please visit the website at coneypower.com to view the full functionality of the site."
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "name": "E CHABOT",
+        "description": "A Fullstack internal business system for a jewelry business",
+        "github": "",
+        "languages": ["js", "tailwind", "react"],
+        "more": {
+            "test": "test",
+            "images": ["/echabot_main.png", "/echabot_1.png"],
+            "descriptions": [
+                "The data is sensitive so I cannot share the website or code.",
+                "Built an internal business management system using React for the frontend and Supabase for the backend.",
+                "The workflow starts with a business idea, which is turned into a design. Staff can then generate quotes for the design, and once approved, it moves into sample production and sales tracking.",
+                "Business workers can view and manage orders using three methods: a live preview link, an Excel export, or a downloadable PDF.",
+                "Supabase’s PostgreSQL database required extensive use of relational tables to handle users, designs, quotes, samples, orders, and file storage.",
+                "Implemented complex relationships and logic in Supabase to ensure smooth transitions between each business stage and maintain data integrity.",
+                "Used Supabase authentication and row-level security to manage staff access and permissions throughout the system.",
+                "Integrated real-time updates so that business workers always see the latest status of each order and project.",
+                "Automated document generation (Excel and PDF) directly from the database, ensuring accuracy and consistency for internal reporting.",
+                "Designed the React frontend to be intuitive for staff, with dynamic forms and dashboards reflecting the current state of each project.",
+                "Worked closely with the business team to refine workflows and ensure the system matched real-world internal processes."
+            ]
+        }
     }
-
-  },
-  {
-    "id":2,
-    "name":"Product Monitor",
-    "description":"A monitor that checks product availability on retail websites",
-    "github":"",
-    "languages":["js"],
-    "more":{
-      "test":"test",
-      "images":["/ProductMonitor-main.png","/ProductMonitor-1.png","/ProductMonitor-2.png"],
-      "descriptions":[
-        "Developed a web scraper to monitor product availability on multiple retail websites using api calls.",
-        "Implemented real-time notifications to alert users when a product becomes available.",
-        "Used discord js to send notifications and control the monitor through discord."
-      ]
-    }
-
-  },
-  {
-    "id":3,
-    "name":"Shopify Store Webpage Design",
-    "description":"A implementation of a webpage design for a Shopify store",
-    "github":"",
-    "languages":[".liquid","html","css"],
-    "more":{
-      "test":"test",
-      "images":["/Shipsure-main.png","/Shipsure-1.png","/Shipsure-2.png"],
-      "descriptions":[
-        "Implemented a custom design for a Shopify store using HTML, CSS, and Liquid.",
-        "Designed a responsive layout that adapts to different screen sizes and orientations.",
-        "Integrated a custom search bar that allows users to quickly find products by name or category.",
-        "Included a contact form that users can fill out to get in touch with the store owner.",
-        "Implemented a newsletter signup form to collect email addresses for marketing purposes."
-      ]
-    }
-  }
 ]
