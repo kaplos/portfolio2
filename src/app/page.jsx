@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import HeroSection from './components/HeroSection';
 import {AboutMe} from './components/AboutMe';
-import {CardCarousel} from './components/CardCarousel';
+import ProjectLayout from './components/ProjectLayout';
 import ContactForm from './components/ContactForm';
 import NavBar from './components/NavBar';
 
@@ -49,7 +49,8 @@ const Page = () => {
         <AboutMe currentSection={currentSection}/>
       </section>
       <section id="projects" className="">
-        <CardCarousel />
+        {/* <CardCarousel /> */}
+        <ProjectLayout />
       </section>
       <section id="contact" className="">
         <ContactForm />
