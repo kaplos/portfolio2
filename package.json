@@ -11,14 +11,22 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@lottiefiles/dotlottie-react": "^0.12.0",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "ionicons": "^7.4.0",
+    "lucide-react": "^0.546.0",
     "next": "15.0.3",
     "primereact": "^10.8.5",
-    "react": "^18.2.0", 
-    "react-dom": "^18.2.0" ,
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.4.0",
     "react-multi-carousel": "^2.8.5",
-    "tailwind-scrollbar": "^3.1.0"
+    "tailwind-merge": "^3.3.1",
+    "tailwind-scrollbar": "^3.1.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "eslint": "^8",

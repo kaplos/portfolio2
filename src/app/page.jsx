@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import HeroSection from './components/HeroSection';
-import {AboutMe} from './components/AboutMe';
+import AboutMe from './components/AboutMe';
 import ProjectLayout from './components/ProjectLayout';
 import ContactForm from './components/ContactForm';
 import NavBar from './components/NavBar';
@@ -45,9 +45,9 @@ const Page = () => {
       <section id="home" className="">
         <HeroSection />
       </section>
-      <section id="about" className="">
+      {/* <section id="about" className=""> */}
         <AboutMe currentSection={currentSection}/>
-      </section>
+      {/* </section> */}
       <section id="projects" className="">
         {/* <CardCarousel /> */}
         <ProjectLayout />
