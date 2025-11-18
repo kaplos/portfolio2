@@ -1,58 +1,75 @@
 'use client'
-import React from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import NavBar from './NavBar';
-import DynamicIcon from './DynamicIcon';
+import React from 'react'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
+import NavBar from './NavBar'
+import DynamicIcon from './DynamicIcon'
+import { motion } from 'framer-motion'
+import { Particles } from '@/components/ui/particles'
+import { Dock,DockIcon, } from '@/components/ui/dock'
+import { LightRays } from '@/components/ui/light-rays'
+import { MorphingText } from '@/components/ui/morphing-text'
+const texts = [
+    'Full-Stack Developer',
+    "Front-End Developer",
+    "Back-End Developer",
+    "Mobile App Developer",
+    'Software Engineer',
+    'Tech Enthusiast',
 
- const HeroSection = () => {
-  return (
-    <div className="relative bg-gray-500 min-h-[90vh] max-h-[95vh] rounded-b-xl shadow-md shadow-white-bottom flex flex-col overflow-hidden z-10" id='home'>
-      <NavBar/>
-      
-      
-      <div className=" absolute z-10 grid grid-rows-2 grid-cols-2 min-h-xl items-center w-full mt-20 ">
-        <div className="row-start-1 z-20 col-start-1 h-full">
-          <DotLottieReact
-            className="row-start-1 col-start-1 h-full "
-            src='3cM5jq1RUy.lottie'
-            loop
-            autoplay
-          />
-        </div>
-        <div className="row-start-1 z-20 col-start-2  ">
-          <DotLottieReact
-            className="row-start-1 col-start-2 h-full"
-            src='JVYss7mfq6.lottie'
-            loop
-            autoplay
-          />
-        </div>
-      </div>
-      {/* this div is for the backdrop */}
-    <div className='backdrop-blur-sm z-20 w-full h-full absolute rounded-b-xl'></div>
 
-      <div className='z-50 flex flex-col items-center justify-center w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 '>
-        <div className=" text-white py-20 flex flex-col items-center justify-center w-full  ">
-          <h1 className="text-4xl animate-fade-in font-sans">Welcome.</h1>
-          <h1 className="text-xl sm:text-sm animate-fade-in p-5 font-sans">Discover the power of innovation. Let&apos;s create something extraordinary together</h1>
-          <div className='flex justify-evenly items-center z-60 gap-2 pt-2 animate-fade-in'>
-            <button className='p-2 bg-indigo-600 rounded-full hover:bg-indigo-700 transition duration-300 flex items-center justify-center shadow-sm' onClick={() => window.open('https://github.com/kaplos ','_blank')}>
-              <DynamicIcon name={'github'} className=" text-white" />
-            </button>
-            <button className='p-2 bg-indigo-600   rounded-full hover:bg-indigo-700 transition duration-300 flex items-center justify-center shadow-sm' onClick={() => window.open('https://www.linkedin.com/in/haym-mallakh-58216b1b8/ ','_blank')}>
-              <DynamicIcon name={'linkedin'} className=" text-white" />
-        
-            </button>
-          </div>
-        </div>
-        <div className=" animate-bounce-small flex justify-center items-end p-4 w-full text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-12 text-white" >
-            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke="white"/>
-          </svg>
-        </div>
+]
+export default function HeroSection() {
+    return (
+        <motion.main className="flex flex-col h-screen justify-center items-center bg-black">
+            <div className="flex flex-col">
+              {/* <div>
+                <MorphingText texts={texts} className={'text-white text-md'}/>
+              </div> */}
+                <motion.div className="flex gap-4">
+
+                  <motion.span
+                          className="pointer-events-none  bg-clip-text text-start text-8xl leading-none font-semibold text-white dark:from-white dark:to-slate-900/10"
+                           initial={{ opacity: 0, y: -50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1 }}
+                          exit={{ opacity: 0, y: 50 }}
+                          whileInView={{ opacity: 1 }}
+                      >
+                          {' '}
+                          Hi, I'm
+                      </motion.span>{' '}
+                  <motion.span
+                      initial={{ opacity: 0, y: -50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1 }}
+                      className="pointer-events-none bg-gradient-to-b from-gray-800 to-gray-300/80 bg-clip-text  text-8xl leading-none font-semibold  text-transparent dark:from-white dark:to-slate-900/10"
+                  >
+                  
+                      Chaim
+                  </motion.span>
+                </motion.div>
+                <motion.p
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
+                    className="mt-4 text-lg text-gray-300"
+                >
+                    A full-stack developer creating A-Z from first sketch to
+                    launch.
+                </motion.p>
+                   
+                    <Dock>
+                      <DockIcon>
+                        <DynamicIcon name={'linkedin'} className=" text-white" />
+                      </DockIcon>
+                      <DockIcon>
+                        <DynamicIcon name={'github'} className=" text-white" /> 
+                      </DockIcon>
+                    </Dock>
             </div>
-      </div>
-  );
-};
+            <LightRays />
+        </motion.main>
+    )
+}
 
-export default HeroSection
+// I’ve built a wide range of projects: web apps, mobile apps, internal business tools, CRMs, dashboards, e-commerce features, real-estate utilities, game logic, and more. A lot of my work includes React, motion-driven UI, Supabase, Node.js, and custom APIs. Whether it’s setting up data models, handling real-time updates, building reliable backend routes, or polishing the front-end interactions, I try to make every part feel consistent and well thought out.

@@ -8,9 +8,10 @@ export const AboutMe = ({currentSection}) => {
           <h1 className="text-4xl text-center text-white mb-4">About Me:</h1>
           <div className="max-w-[65vw] items-center flex flex-col pt-5 text-white">
             <span className="text-lg font-sans">
-              I&apos;m a passionate new software developer eager to take on challenges. With experience in back-end, full-stack, and mobile app development. I&apos;m eager to contribute to innovative projects and grow my skills. Let&apos;s create something amazing together!
+I’ve built a wide range of projects: web apps, mobile apps, internal business tools, CRMs, dashboards, e-commerce features, real-estate utilities, game logic, and more. A lot of my work includes React, motion-driven UI, Supabase, Node.js, and custom APIs. Whether it’s setting up data models, handling real-time updates, building reliable backend routes, or polishing the front-end interactions, I try to make every part feel consistent and well thought out.
+
             </span>
-            <SkillsTypingAnimation currentSection={currentSection} />
+            {/* <SkillsTypingAnimation currentSection={currentSection} /> */}
           </div>
         </div>
       </div>
