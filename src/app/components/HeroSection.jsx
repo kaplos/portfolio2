@@ -3,7 +3,7 @@ import React from 'react'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import NavBar from './NavBar'
 import DynamicIcon from './DynamicIcon'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Particles } from '@/components/ui/particles'
 import { Dock,DockIcon, } from '@/components/ui/dock'
 import { LightRays } from '@/components/ui/light-rays'
@@ -19,9 +19,20 @@ const texts = [
 
 ]
 export default function HeroSection() {
+    const { scrollY } = useScroll()
+    
+    // Fade out "Hi, I'm" based on scroll
+    const hiImOpacity = useTransform(scrollY, [0, 100], [1, 0])
+    
+    // Fade out description based on scroll
+    const descriptionOpacity = useTransform(scrollY, [0, 100], [1, 0])
+    
+    // Move name and dock to the left, then keep centered
+    const nameX = useTransform(scrollY, [100, 250], [0, -window.innerWidth / 4])
+    
     return (
-        <motion.main className="flex flex-col h-screen justify-center items-center bg-black">
-            <div className="flex flex-col">
+        <motion.main className="flex flex-col h-screen justify-center items-center bg-black fixed top-0 left-0 w-full">
+            <motion.div className="flex flex-col" style={{ x: nameX }}>
               {/* <div>
                 <MorphingText texts={texts} className={'text-white text-md'}/>
               </div> */}
@@ -34,6 +45,7 @@ export default function HeroSection() {
                       transition={{ duration: 1 }}
                           exit={{ opacity: 0, y: 50 }}
                           whileInView={{ opacity: 1 }}
+                          style={{ opacity: hiImOpacity }}
                       >
                           {' '}
                           Hi, I'm
@@ -53,6 +65,7 @@ export default function HeroSection() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                     className="mt-4 text-lg text-gray-300"
+                    style={{ opacity: descriptionOpacity }}
                 >
                     A full-stack developer creating A-Z from first sketch to
                     launch.
@@ -66,7 +79,7 @@ export default function HeroSection() {
                         <DynamicIcon name={'github'} className=" text-white" /> 
                       </DockIcon>
                     </Dock>
-            </div>
+            </motion.div>
             <LightRays />
         </motion.main>
     )
