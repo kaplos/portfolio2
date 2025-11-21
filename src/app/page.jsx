@@ -6,7 +6,7 @@ import ProjectLayout from './components/ProjectLayout';
 import ContactForm from './components/ContactForm';
 import NavBar from './components/NavBar';
 
-const Page = () => {
+export default function Page () {
   const [currentSection, setCurrentSection] = useState('home');
   const sections = ['home', 'about', 'projects', 'contact'];
 
@@ -42,21 +42,11 @@ const Page = () => {
   return (
     <div className=' overflow-y-auto scrollbar-thumb-red-200 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-red-500 bg-slate-900'>
       <NavBar currentSection={currentSection} setCurrentSection={setCurrentSection} />
-      <section id="home" className="">
         <HeroSection />
-      </section>
-      <section id="about" className="">
         <AboutMe currentSection={currentSection}/>
-      </section>
-      <section id="projects" className="">
         {/* <CardCarousel /> */}
         <ProjectLayout />
-      </section>
-      <section id="contact" className="">
         <ContactForm />
-      </section>
     </div>
   );
 };
-
-export default Page;

@@ -1,17 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGitAlt, FaPython, FaJava } from 'react-icons/fa';
-import { SiTailwindcss, SiExpress } from 'react-icons/si';
+import { skills } from '@/lib/skillArray';
 import Switch from './Switch';
-const skills = [
-  { skill: 'JavaScript', example: 'console.log("JavaScript");', icon: <FaJs /> },
-  { skill: 'React', example: 'const element = <h1>React</h1>;', icon: <FaReact /> },
-  { skill: 'Express', example: 'app.get("/", (req, res) => res.send("Express"));', icon: <SiExpress /> },
-  { skill: 'HTML', example: '<h1>HTML</h1>', icon: <FaHtml5 /> },
-  { skill: 'Tailwind CSS', example: '<div className="text-white">Tailwind</div>', icon: <SiTailwindcss /> },
-  { skill: 'Git', example: 'git commit -m "Git"', icon: <FaGitAlt /> },
-  { skill: 'Python', example: 'print("Python")', icon: <FaPython /> },
-  { skill: 'Java', example: 'System.out.println("Java");', icon: <FaJava /> },
-];
+
 
 const SkillsTypingAnimation = ({currentSection}) => {
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
