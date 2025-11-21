@@ -41,9 +41,10 @@ export const skills = [
             ' return (<View><Text>Hello RN</Text></View>) }',
         icon: <FaMobileAlt size={24} />,
     },
+    
 ]
 export const tools = [
-    { skill: 'Git', example: 'git commit -m "Git"', icon: <FaGitAlt size={24} /> },
+    { skill: 'Git', example: 'git commit -m "Git"', icon: <FaGitAlt size={24} />},
     { skill: 'VS Code', example: 'code HelloWorld.js', icon: <VscVscode size={24} /> },
      { skill: 'Postman', example: 'GET /HelloWorld', icon: <SiPostman size={24} /> },
         { skill: 'npm', example: 'npm install', icon: <SiNpm size={24} /> },

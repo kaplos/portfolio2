@@ -3,7 +3,6 @@ import {
     ScrollVelocityRow,
 } from '@/components/ui/scroll-based-velocity'
 import SkillsTypingAnimation from './skillAnnimation'
-import VelocityScrollTools from './VelocityScrollTools'
 
 export const AboutMe = ({ currentSection }) => {
     return (
@@ -27,7 +26,6 @@ export const AboutMe = ({ currentSection }) => {
                         front-end interactions, I try to make every part feel
                         consistent and well thought out.
                     </p>
-                    <VelocityScrollTools />
                     {/* <SkillsTypingAnimation currentSection={currentSection} /> */}
                 </div>
             </div>

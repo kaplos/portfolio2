@@ -64,6 +64,7 @@ function ScrollVelocityRowImpl({
   const containerRef = useRef(null)
   const blockRef = useRef(null)
   const [numCopies, setNumCopies] = useState(1)
+  const [isHovered, setIsHovered] = useState(false)
 
   const baseX = useMotionValue(0)
   const baseDirectionRef = useRef(direction >= 0 ? 1 : -1)
@@ -128,7 +129,7 @@ function ScrollVelocityRowImpl({
   })
 
   useAnimationFrame((_, delta) => {
-    if (!isInViewRef.current || !isPageVisibleRef.current) return
+    if (!isInViewRef.current || !isPageVisibleRef.current || isHovered) return
     const dt = delta / 1000
     const vf = velocityFactor.get()
     const absVf = Math.min(5, Math.abs(vf))
@@ -151,6 +152,8 @@ function ScrollVelocityRowImpl({
     <div
       ref={containerRef}
       className={cn("w-full overflow-hidden whitespace-nowrap", className)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       {...props}>
       <motion.div
         className="inline-flex transform-gpu items-center will-change-transform select-none"

@@ -5,6 +5,7 @@ import {AboutMe} from './components/AboutMe';
 import ProjectLayout from './components/ProjectLayout';
 import ContactForm from './components/ContactForm';
 import NavBar from './components/NavBar';
+import VelocityScrollTools from './components/VelocityScrollTools';
 
 export default function Page () {
   const [currentSection, setCurrentSection] = useState('home');
@@ -44,6 +45,7 @@ export default function Page () {
       <NavBar currentSection={currentSection} setCurrentSection={setCurrentSection} />
         <HeroSection />
         <AboutMe currentSection={currentSection}/>
+        <VelocityScrollTools /> 
         {/* <CardCarousel /> */}
         <ProjectLayout />
         <ContactForm />
