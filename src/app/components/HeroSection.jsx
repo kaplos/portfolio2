@@ -1,85 +1,148 @@
 'use client'
-import React from 'react'
-import { DotLottieReact } from '@lottiefiles/dotlottie-react'
-import NavBar from './NavBar'
+import React, { useRef, useEffect, useState } from 'react'
+import {
+    motion,
+    useScroll,
+    useTransform,
+    useMotionValueEvent,
+    useMotionValue,
+    useSpring,
+} from 'framer-motion'
 import DynamicIcon from './DynamicIcon'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Particles } from '@/components/ui/particles'
-import { Dock,DockIcon, } from '@/components/ui/dock'
 import { LightRays } from '@/components/ui/light-rays'
-import { MorphingText } from '@/components/ui/morphing-text'
-const texts = [
-    'Full-Stack Developer',
-    "Front-End Developer",
-    "Back-End Developer",
-    "Mobile App Developer",
-    'Software Engineer',
-    'Tech Enthusiast',
+import { Dock, DockIcon } from '@/components/ui/dock'
+import { useLayoutEffect } from 'react'
 
-
-]
 export default function HeroSection() {
     const { scrollY } = useScroll()
-    
-    // Fade out "Hi, I'm" based on scroll
-    const hiImOpacity = useTransform(scrollY, [0, 100], [1, 0])
-    
-    // Fade out description based on scroll
+    const heroRef = useRef(null)
+    const dockRef = useRef(null)
+    const descriptionRef= useRef(null)
+    const [hiImAbsolute, setHiImAbsolute] = useState(false)
+    const [descriptionSize, setDescriptionSize] = useState({ w: 0, h: 0 })
+    useMotionValueEvent(scrollY, 'change', (latest) => {
+        console.log('Page scroll: ', latest)
+    })
+    // fade first, then collapse its layout space slightly after fade starts
     const descriptionOpacity = useTransform(scrollY, [0, 100], [1, 0])
-    
-    // Move name and dock to the left, then keep centered
-    const nameX = useTransform(scrollY, [100, 250], [0, -window.innerWidth / 4])
-    
-    return (
-        <motion.main className="flex flex-col h-screen justify-center items-center bg-black fixed top-0 left-0 w-full">
-            <motion.div className="flex flex-col" style={{ x: nameX }}>
-              {/* <div>
-                <MorphingText texts={texts} className={'text-white text-md'}/>
-              </div> */}
-                <motion.div className="flex gap-4">
+    const hiImMaxWidth = useTransform(scrollY, [40, 160], ['600px', '0px'])
+    const descriptionMaxWidth = useTransform(
+        scrollY,
+        [120, 160],
+        ['600px', '0px']
+    )
 
-                  <motion.span
-                          className="pointer-events-none  bg-clip-text text-start text-8xl leading-none font-semibold text-white dark:from-white dark:to-slate-900/10"
-                           initial={{ opacity: 0, y: -50 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1 }}
-                          exit={{ opacity: 0, y: 50 }}
-                          whileInView={{ opacity: 1 }}
-                          style={{ opacity: hiImOpacity }}
-                      >
-                          {' '}
-                          Hi, I'm
-                      </motion.span>{' '}
-                  <motion.span
-                      initial={{ opacity: 0, y: -50 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1 }}
-                      className="pointer-events-none bg-gradient-to-b from-gray-800 to-gray-300/80 bg-clip-text  text-8xl leading-none font-semibold  text-transparent dark:from-white dark:to-slate-900/10"
-                  >
-                  
-                      Chaim
-                  </motion.span>
+    const gapTransform = useTransform(scrollY, [0, 120], ['1.25rem', '0rem'])
+    const gapSpring = useSpring(gapTransform, { damping: 24, stiffness: 160 })
+    const hiImOpacity = useTransform(scrollY, [0, 100], [1, 0])
+    useMotionValueEvent(descriptionOpacity, 'change', (v) => {
+        // threshold can be adjusted; when nearly invisible mark as absolute
+        console.log('hiImOpacity:', v, v < 0.02)
+        setHiImAbsolute(v < 0.02)
+        setDescriptionSize(v < 0.02)
+    })
+     useLayoutEffect(() => {
+    if (!descriptionRef.current) return
+    const update = () => {
+      const r = descriptionRef.current.getBoundingClientRect()
+      setDescriptionSize({ w: Math.round(r.width), h: Math.round(r.height) })
+    }
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(descriptionRef.current)
+    return () => ro.disconnect()
+  }, [])
+    // description fades with the heading
+    // move the entire block to the left after heading has mostly collapsed
+    // const nameX = useTransform(scrollY, [40, 120], [0, -window.innerWidth / 2])
+    const nameX = useTransform(scrollY, (value) => {
+        value = Math.max(40, Math.min(120, value))
+        const offset =
+            window.innerWidth / 2 -
+            (heroRef?.current?.getBoundingClientRect().width || 0) / 2 -
+            30
+        return -offset * ((value - 40) / (120 - 40))
+    })
+    const dockX = useTransform(scrollY, (value) => {
+        value = Math.max(40, Math.min(108, value))
+        const offset =
+            window.innerWidth / 2 -
+            (dockRef?.current?.getBoundingClientRect().width || 0) / 2 -
+            30
+        return -offset * ((value - 40) / (108 - 40))
+    })
+
+    // new: lift the dock up (closer to the name) as soon as fade starts
+    // adjust ranges/values to taste
+    const dockY = useTransform(scrollY, [0, 120], ['16px', '-50px'])
+
+    return (
+        <motion.main
+            className={`flex flex-col h-screen bg-black fixed top-0 left-0 w-full ${hiImAbsolute ? 'gap-5' : ''  }`}
+            initial={{ justifyContent: 'center', alignItems: 'center' }}
+        >
+            <motion.div
+                className="flex flex-col "
+                style={{ x: nameX }}
+                ref={heroRef}
+            >
+                <motion.div
+                    className={`flex items-center bg-white/5 ${hiImAbsolute ? 'mb-4' : ''}`}
+                    style={{ gap: gapSpring }}
+                >
+                    {/* first span fades then collapses its width — use inline-block + overflow to release space */}
+                    <motion.span
+                        className="pointer-events-none bg-clip-text text-start text-8xl leading-none font-semibold text-white inline-block overflow-hidden whitespace-nowrap"
+                        style={{ opacity: hiImOpacity, maxWidth: hiImMaxWidth }}
+                        transition={{ duration: 0.25 }}
+                    >
+                        Hi, I'm
+                    </motion.span>
+
+                    {/* when the first span collapses, this span will move left into the start of the container */}
+                    <motion.span
+                        className="pointer-events-none bg-gradient-to-b from-gray-800 to-gray-300/80 bg-clip-text text-8xl leading-none font-semibold text-transparent ml-0"
+                        transition={{ duration: 0.6 }}
+                    >
+                        Chaim
+                    </motion.span>
                 </motion.div>
+                
                 <motion.p
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
-                    className="mt-4 text-lg text-gray-300"
-                    style={{ opacity: descriptionOpacity }}
+                    ref={descriptionRef}
+                    className="mt-4 ml-2 text-lg text-gray-300 max-w-3xl"
+                    style={{
+                        opacity: descriptionOpacity,
+                        maxWidth: descriptionMaxWidth,
+                        // toggle out of flow once hidden so the second span takes the space
+                        position: hiImAbsolute ? 'absolute' : 'relative',
+                        left: hiImAbsolute ? '-10000px' : 0,
+                        // keep it non-interactive when absolute
+                        pointerEvents: hiImAbsolute ? 'none' : 'auto',
+                    }}
                 >
                     A full-stack developer creating A-Z from first sketch to
                     launch.
                 </motion.p>
-                   
-                    <Dock>
-                      <DockIcon>
-                        <DynamicIcon name={'linkedin'} className=" text-white" />
-                      </DockIcon>
-                      <DockIcon>
-                        <DynamicIcon name={'github'} className=" text-white" /> 
-                      </DockIcon>
+
+                <motion.div className="" style={{ y: dockY}} animate={{ marginTop: hiImAbsolute ? '0px' : '16px' }}>
+                    <Dock ref={dockRef}>
+                        <DockIcon>
+                            <DynamicIcon
+                                name={'linkedin'}
+                                className="text-white"
+                            />
+                        </DockIcon>
+                        <DockIcon>
+                            <DynamicIcon
+                                name={'github'}
+                                className="text-white"
+                            />
+                        </DockIcon>
                     </Dock>
+                </motion.div>
             </motion.div>
+
             <LightRays />
         </motion.main>
     )
