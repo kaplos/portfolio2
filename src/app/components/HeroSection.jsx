@@ -20,9 +20,9 @@ export default function HeroSection() {
     const descriptionRef= useRef(null)
     const [hiImAbsolute, setHiImAbsolute] = useState(false)
     const [descriptionSize, setDescriptionSize] = useState({ w: 0, h: 0 })
-    useMotionValueEvent(scrollY, 'change', (latest) => {
-        console.log('Page scroll: ', latest)
-    })
+    // useMotionValueEvent(scrollY, 'change', (latest) => {
+    //     console.log('Page scroll: ', latest)
+    // })
     // fade first, then collapse its layout space slightly after fade starts
     const descriptionOpacity = useTransform(scrollY, [0, 100], [1, 0])
     const hiImMaxWidth = useTransform(scrollY, [40, 160], ['600px', '0px'])
@@ -41,17 +41,17 @@ export default function HeroSection() {
         setHiImAbsolute(v < 0.02)
         setDescriptionSize(v < 0.02)
     })
-     useLayoutEffect(() => {
-    if (!descriptionRef.current) return
-    const update = () => {
-      const r = descriptionRef.current.getBoundingClientRect()
-      setDescriptionSize({ w: Math.round(r.width), h: Math.round(r.height) })
-    }
-    update()
-    const ro = new ResizeObserver(update)
-    ro.observe(descriptionRef.current)
-    return () => ro.disconnect()
-  }, [])
+//      useLayoutEffect(() => {
+//     if (!descriptionRef.current) return
+//     const update = () => {
+//       const r = descriptionRef.current.getBoundingClientRect()
+//       setDescriptionSize({ w: Math.round(r.width), h: Math.round(r.height) })
+//     }
+//     update()
+//     const ro = new ResizeObserver(update)
+//     ro.observe(descriptionRef.current)
+//     return () => ro.disconnect()
+//   }, [])
     // description fades with the heading
     // move the entire block to the left after heading has mostly collapsed
     // const nameX = useTransform(scrollY, [40, 120], [0, -window.innerWidth / 2])
@@ -74,7 +74,7 @@ export default function HeroSection() {
 
     // new: lift the dock up (closer to the name) as soon as fade starts
     // adjust ranges/values to taste
-    const dockY = useTransform(scrollY, [0, 120], ['16px', '-50px'])
+    const dockY = useTransform(scrollY, [0, 120], ['16px', '-16px'])
 
     return (
         <motion.main
@@ -87,7 +87,7 @@ export default function HeroSection() {
                 ref={heroRef}
             >
                 <motion.div
-                    className={`flex items-center bg-white/5 ${hiImAbsolute ? 'mb-4' : ''}`}
+                    className={`flex items-center`}
                     style={{ gap: gapSpring }}
                 >
                     {/* first span fades then collapses its width — use inline-block + overflow to release space */}

@@ -28,7 +28,7 @@ const iconMap = {
 };
 
 const DynamicIcon = ({ name,className="",size=17}) => {
-  console.log(className);
+  // console.log(className);
   const IconComponent = iconMap[name];
   if (!IconComponent) return null;
   return(
