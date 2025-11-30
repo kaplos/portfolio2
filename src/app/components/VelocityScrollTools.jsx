@@ -8,10 +8,10 @@ export default function VelocityScrollTools() {
     const [skills1, skills2] = useMemo(() => {
         const half = Math.ceil(skills.length / 2)
         return [skills.slice(0, half), skills.slice(half)]
-    }, [skills])
+    }, [])
     let all3Arrays = [skills1, skills2, tools]
     return (
-        <div>
+        <div className=' py-6'>
             {all3Arrays.map((array, index) => (
                 <ScrollVelocityContainer
                     key={index}

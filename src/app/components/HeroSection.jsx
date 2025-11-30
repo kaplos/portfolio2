@@ -77,8 +77,8 @@ export default function HeroSection() {
     const dockY = useTransform(scrollY, [0, 120], ['16px', '-16px'])
 
     return (
-        <motion.main
-            className={`flex flex-col h-screen bg-black fixed top-0 left-0 w-full ${hiImAbsolute ? 'gap-5' : ''  }`}
+        <motion.section
+            className={`flex flex-col h-screen fixed top-0 left-0 w-full ${hiImAbsolute ? 'gap-5' : ''  }`}
             initial={{ justifyContent: 'center', alignItems: 'center' }}
         >
             <motion.div
@@ -144,7 +144,7 @@ export default function HeroSection() {
             </motion.div>
 
             <LightRays />
-        </motion.main>
+        </motion.section>
     )
 }
 

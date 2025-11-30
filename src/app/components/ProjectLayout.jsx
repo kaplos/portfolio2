@@ -25,7 +25,7 @@ export default function ProjectLayout({ children }) {
     }
     return (
         <div
-            className="z-10 flex flex-col justify-center align-center min-h-[90vh] "
+            className="z-10 flex flex-col justify-center align-center min-h-[90vh] bg-gray-900 py-12"
             id="projects"
         >
             {isLoading && <p className="text-white">Loading projects...</p>}
