@@ -1,70 +1,46 @@
 'use client'
-import { useRef, useState } from 'react'
-import { Card, CardHeader, CardContent } from '@/components/ui/card'
+import { useRef } from 'react'
+import emailjs from '@emailjs/browser'
+import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { ShineBorder } from '@/components/ui/shine-border'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
+import { BorderBeam } from '@/components/ui/border-beam'
 
 const ContactForm = () => {
     const form = useRef()
-    const [isLoading, setIsLoading] = useState(false)
-    const [status, setStatus] = useState('')
-
-    const sendEmail = async (e) => {
+    const sendEmail = (e) => {
         e.preventDefault()
-        setIsLoading(true)
-        setStatus('')
 
-        const formData = new FormData(form.current)
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            message: formData.get('message')
-        }
-
-        try {
-            const response = await fetch('/api/send-email', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
+        emailjs
+            .sendForm('service_brlg41u', 'template_4zrm42b', form.current, {
+                publicKey: 'uIRUa3CPPqSJ7XDZB',
             })
-
-            if (response.ok) {
-                setStatus('Message sent successfully!')
-                form.current.reset()
-            } else {
-                setStatus('Failed to send message. Please try again.')
-            }
-        } catch (error) {
-            console.error('Error:', error)
-            setStatus('An error occurred. Please try again.')
-        } finally {
-            setIsLoading(false)
-        }
+            .then(
+                () => {
+                    console.log('SUCCESS!')
+                    form.current.reset()
+                },
+                (error) => {
+                    console.log('FAILED...', error.text)
+                }
+            )
     }
 
     return (
         <div className='flex justify-center items-center min-h-[90vh] py-12' id='contact'>
-            <Card className="relative w-full max-w-[350px] bg-neutral-950/80 shadow-lg rounded-lg overflow-visible">
-                <ShineBorder 
-                    borderWidth={2} 
-                    duration={14}
-                    shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']} 
-                />
-                <CardHeader className="text-neutral-300 relative z-10">
-                    <h2 className="text-2xl font-bold">Let's Connect</h2>
-                </CardHeader>
-                <CardContent className="relative z-10">
+            <Card className="relative w-full max-w-[350px] overflow-hidden border-none bg-neutral-950/80 shadow-lg">
+                <ShineBorder borderWidth={2} shineColor={['#A07CFE', '#FE8FB5', '#FFBE7B']} />
+                <CardHeader className="text-neutral-300">Let's Connect</CardHeader>
+                <CardContent>
                     <form ref={form} onSubmit={sendEmail}>
                         <div className="grid gap-4">
                             <div className="grid gap-2">
-                                <Label htmlFor="name" className="text-neutral-300">Name</Label>
+                                <Label htmlFor="Name" className="text-neutral-300">Name</Label>
                                 <Input
-                                    id="name"
+                                    id="Name"
                                     name="name"
                                     type="text"
                                     placeholder="John Doe"
@@ -94,19 +70,14 @@ const ContactForm = () => {
                             </div>
                             <Button
                                 type="submit"
-                                disabled={isLoading}
-                                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+                                className="w-full bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 text-neutral-300"
                             >
-                                {isLoading ? 'Sending...' : "Let's Build Something Together"}
+                                Lets Build Something Together
                             </Button>
-                            {status && (
-                                <p className={`text-sm ${status.includes('success') ? 'text-green-400' : 'text-red-400'}`}>
-                                    {status}
-                                </p>
-                            )}
                         </div>
                     </form>
                 </CardContent>
+
             </Card>
         </div>
     )
