@@ -24,19 +24,13 @@ const iconMap = {
   'discord': FaDiscord,
 
 
-  // Add more icons here
 };
 
-const DynamicIcon = ({ name,className="",size=17}) => {
+export default function DynamicIcon({ name,className="",size=17}) {
   // console.log(className);
   const IconComponent = iconMap[name];
   if (!IconComponent) return null;
   return(
-    <IconComponent title={name} className={className} fontSize={size} />
-    // <div className="icon-container" title={name}>
-    //  <span className="hover-text">{name}</span> 
-    // </div>
+    <IconComponent title={name} className={[className,"text-neutral-300 "].join(" ")} fontSize={size} />
     );
 };
-
-export default DynamicIcon;

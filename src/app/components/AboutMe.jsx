@@ -6,15 +6,12 @@ import SkillsTypingAnimation from './skillAnnimation'
 
 export default function AboutMe() {
     return (
-        <section className="  " id="about">
-            <div
-                className=" flex items-center justify-center"
-            >
-                <div className="">
-                    <h1 className="text-4xl text-center text-white mb-4">
+        <section className="min-h-[90vh] flex items-center justify-center " id="about">
+                <div className="items-center justify-center">
+                    <h1 className="text-4xl text-center text-neutral-300 mb-4">
                         About Me:
                     </h1>
-                    <div className=" items-center flex flex-col pt-5 text-white">
+                    <div className=" items-center flex flex-col pt-5 text-neutral-300">
                         <p className="text-lg font-sans text-center px-4 max-w-full">
                             I’ve built a wide range of projects: web apps, mobile
                             apps, internal business tools, CRMs, dashboards,
@@ -29,7 +26,6 @@ export default function AboutMe() {
                         {/* <SkillsTypingAnimation currentSection={currentSection} /> */}
                     </div>
                 </div>
-            </div>
         </section>
     )
 }

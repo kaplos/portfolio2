@@ -3,9 +3,7 @@ import { SiTailwindcss, SiExpress } from 'react-icons/si';
 import { SiNextdotjs } from 'react-icons/si';
 import { FaMobileAlt } from 'react-icons/fa';
 import { VscVscode } from 'react-icons/vsc';
-import { SiPostman } from 'react-icons/si';
-import { SiNpm } from 'react-icons/si';
-import { SiPrisma } from 'react-icons/si';
+import { SiPrisma,SiNpm,SiPostman,SiSupabase } from 'react-icons/si';
 export const skills = [
     {
         skill: 'JavaScript',
@@ -48,5 +46,6 @@ export const tools = [
     { skill: 'VS Code', example: 'code HelloWorld.js', icon: <VscVscode size={24} /> },
      { skill: 'Postman', example: 'GET /HelloWorld', icon: <SiPostman size={24} /> },
         { skill: 'npm', example: 'npm install', icon: <SiNpm size={24} /> },
-        { skill: 'Prisma (ORM)', example: 'model Users {id Int, Name String}', icon: <SiPrisma size={24} /> }
+        { skill: 'Prisma (ORM)', example: 'model Users {id Int, Name String}', icon: <SiPrisma size={24} /> },
+        { skill: 'Supabase', example: 'supabase.from("projects").select()', icon: <SiSupabase size={24} /> }
 ]

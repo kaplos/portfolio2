@@ -1,13 +1,22 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import HeroSection from './components/HeroSection';
-import AboutMe from './components/AboutMe';
 import ProjectLayout from './components/ProjectLayout';
+import AboutMe from './components/AboutMe';
 import ContactForm from './components/ContactForm';
 import NavBar from './components/NavBar';
 import VelocityScrollTools from './components/VelocityScrollTools';
 import { motion,useScroll,useTransform, useSpring, useMotionValueEvent } from 'framer-motion';
 export default function Page () {
+  const [isMobile, setIsMobile] = useState(false);
+   useEffect(() => {
+          const checkMobile = () => {
+              setIsMobile(window.innerWidth <= 768)
+          }   
+          window.addEventListener('resize', checkMobile)
+          checkMobile()
+          return () => window.removeEventListener('resize', checkMobile)
+      }, [])
   const { scrollY } = useScroll();
   const [currentSection, setCurrentSection] = useState('home');
   const sections = ['home', 'about', 'projects', 'contact'];
@@ -51,24 +60,23 @@ export default function Page () {
   }, []);
 
   return (
-    <div className='overflow-y-auto bg-black scrollbar-thumb-red-200 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-red-500'>
-      <NavBar currentSection={currentSection} setCurrentSection={setCurrentSection} />
+    <div className='overflow-y-auto bg-[#101010] scrollbar-thumb-red-200 scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-red-500'>
         <motion.div
-          style={{ display: 'flex', flexWrap: 'wrap', overflow: 'hidden' }}
+          style={isMobile ?  {}:{ display: 'flex', flexWrap: 'wrap', overflow: 'hidden' } }
           className="w-full"
         >
           <motion.div
             className="flex-shrink-0  h-[90vh]"
-            style={{ width: leftWidthSmoothed, minWidth: 0 }}
+            style={isMobile ? {} : { width: leftWidthSmoothed, minWidth: 0 }}
             transition={{ duration: 0.6, ease: 'easeInOut' }}
             layout
           >
-            <HeroSection />
+            <HeroSection isMobile={isMobile} />
           </motion.div>
 
           <motion.div
-            className="flex-shrink-0 bg-slate-900"
-            style={{ 
+            className="flex-shrink-0 "
+            style={isMobile ? {} : {
               width: rightWidthSmoothed,
               minWidth: 0,
               marginLeft: rightMarginSmoothed

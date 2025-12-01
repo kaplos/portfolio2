@@ -15,7 +15,7 @@ export default function VelocityScrollTools() {
             {all3Arrays.map((array, index) => (
                 <ScrollVelocityContainer
                     key={index}
-                    className="text-4xl font-bold tracking-[-0.02em] md:text-7xl md:leading-[5rem]"
+                    className="text-4xl font-bold tracking-[-0.02em] md:text-7xl  md:leading-[5rem]"
                 >
                     <ScrollVelocityRow
                         direction={index % 2 === 0 ? 1 : -1}
@@ -24,10 +24,10 @@ export default function VelocityScrollTools() {
                         {array.map((item, idx) => (
                             <div
                                 key={idx}
-                                className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 border border-gray-700 mx-3 flex flex-col items-center gap-3 min-w-[120px]"
+                                className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 m-3 border border-gray-700  flex flex-col items-center gap-4 min-w-[120px]"
                             >
-                                <div className="text-white">{item.icon}</div>
-                                <p className="text-sm text-gray-300 font-medium">
+                                <div className="text-neutral-300">{item.icon}</div>
+                                <p className="text-sm text-neutral-300 font-medium">
                                     {item.skill}
                                 </p>
                             </div>

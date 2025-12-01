@@ -53,12 +53,19 @@ module.exports = {
   					right: '1rem',
   					transform: 'translateX(0) scale(1)'
   				}
-  			}
+  			},
+			shine: {
+          '0%': { backgroundPosition: '0% 0%' },
+          '50%': { backgroundPosition: '50% 50%' },
+          '75%': { backgroundPosition: '100% 100%' },
+          '100%': { backgroundPosition: '0% 0%' },
+        },
   		},
   		animation: {
   			'bounce-small': 'bounceSmall 3s infinite',
   			'fade-in': 'fadeIn 2s ease-in-out',
-  			'move-to-corner': 'moveToCorner 0.1s ease-in-out forwards'
+  			'move-to-corner': 'moveToCorner 0.1s ease-in-out forwards',
+			'shine': 'shine 14s linear infinite'
   		},
   		colors: {
   			background: 'hsl(var(--background))',
