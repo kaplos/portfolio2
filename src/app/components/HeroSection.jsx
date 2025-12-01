@@ -58,7 +58,7 @@ export default function HeroSection({ isMobile = false }) {
         if (isMobile) return 0
         value = Math.max(40, Math.min(108, value))
         const offset =
-            window.innerWidth / 2 -
+            windowWidth / 2 -
             (dockRef?.current?.getBoundingClientRect().width || 0) / 2 -
             30
         return -offset * ((value - 40) / (108 - 40))
