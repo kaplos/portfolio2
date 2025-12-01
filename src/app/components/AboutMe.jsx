@@ -1,8 +1,3 @@
-import {
-    ScrollVelocityContainer,
-    ScrollVelocityRow,
-} from '@/components/ui/scroll-based-velocity'
-import SkillsTypingAnimation from './skillAnnimation'
 
 export default function AboutMe() {
     return (
@@ -23,7 +18,6 @@ export default function AboutMe() {
                             front-end interactions, I try to make every part feel
                             consistent and well thought out.
                         </p>
-                        {/* <SkillsTypingAnimation currentSection={currentSection} /> */}
                     </div>
                 </div>
         </section>
