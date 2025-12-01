@@ -19,7 +19,13 @@ export default function HeroSection({ isMobile = false }) {
     const dockRef = useRef(null)
     const descriptionRef = useRef(null)
     const [hiImAbsolute, setHiImAbsolute] = useState(false)
-    const [descriptionSize, setDescriptionSize] = useState({ w: 0, h: 0 })
+    const [windowWidth, setWindowWidth] = useState(0)
+    useEffect(() => {
+              const getWindowWidth = () => {
+                  setWindowWidth(window.innerWidth)
+              }   
+              getWindowWidth()
+          }, [])
 
     const descriptionOpacity = useTransform(scrollY, [0, 100], [1, 0])
     const hiImMaxWidth = useTransform(scrollY, [40, 160], ['600px', '0px'])
@@ -36,14 +42,13 @@ export default function HeroSection({ isMobile = false }) {
     useMotionValueEvent(descriptionOpacity, 'change', (v) => {
         console.log('hiImOpacity:', v, v < 0.02)
         setHiImAbsolute(v < 0.02)
-        setDescriptionSize(v < 0.02)
     })
 
     const nameX = useTransform(scrollY, (value) => {
         if (isMobile) return 0
         value = Math.max(40, Math.min(120, value))
         const offset =
-            window.innerWidth / 2 -
+            windowWidth / 2 -
             (heroRef?.current?.getBoundingClientRect().width || 0) / 2 -
             30
         return -offset * ((value - 40) / (120 - 40))
