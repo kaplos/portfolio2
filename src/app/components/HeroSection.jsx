@@ -5,14 +5,20 @@ import {
     useScroll,
     useTransform,
     useMotionValueEvent,
-    useMotionValue,
     useSpring,
 } from 'framer-motion'
 import DynamicIcon from './DynamicIcon'
 import { LightRays } from '@/components/ui/light-rays'
 import { Dock, DockIcon } from '@/components/ui/dock'
-import { useLayoutEffect } from 'react'
-
+import { MorphingText } from '@/components/ui/morphing-text'
+const texts = [
+    'Full-Stack Developer',
+    'Front-End Developer',
+    'Back-End Developer',
+    'Mobile App Developer',
+    'Software Engineer',
+    'Tech Enthusiast',
+]
 export default function HeroSection({ isMobile = false }) {
     const { scrollY } = useScroll()
     const heroRef = useRef(null)
@@ -21,11 +27,11 @@ export default function HeroSection({ isMobile = false }) {
     const [hiImAbsolute, setHiImAbsolute] = useState(false)
     const [windowWidth, setWindowWidth] = useState(0)
     useEffect(() => {
-              const getWindowWidth = () => {
-                  setWindowWidth(window.innerWidth)
-              }   
-              getWindowWidth()
-          }, [])
+        const getWindowWidth = () => {
+            setWindowWidth(window.innerWidth)
+        }
+        getWindowWidth()
+    }, [])
 
     const descriptionOpacity = useTransform(scrollY, [0, 100], [1, 0])
     const hiImMaxWidth = useTransform(scrollY, [40, 160], ['600px', '0px'])
@@ -40,7 +46,6 @@ export default function HeroSection({ isMobile = false }) {
     const hiImOpacity = useTransform(scrollY, [0, 100], [1, 0])
 
     useMotionValueEvent(descriptionOpacity, 'change', (v) => {
-        console.log('hiImOpacity:', v, v < 0.02)
         setHiImAbsolute(v < 0.02)
     })
 
@@ -54,50 +59,41 @@ export default function HeroSection({ isMobile = false }) {
         return -offset * ((value - 40) / (120 - 40))
     })
 
-    const dockX = useTransform(scrollY, (value) => {
-        if (isMobile) return 0
-        value = Math.max(40, Math.min(108, value))
-        const offset =
-            windowWidth / 2 -
-            (dockRef?.current?.getBoundingClientRect().width || 0) / 2 -
-            30
-        return -offset * ((value - 40) / (108 - 40))
-    })
-
     const dockY = useTransform(scrollY, [0, 120], ['16px', '-16px'])
 
     return (
         <motion.section
             className={`flex flex-col h-screen ${
-                isMobile ? 'relative ' : 'fixed'
-            } top-0 left-0 w-full ${
-                hiImAbsolute && !isMobile ? 'gap-5' : ''
-            }`}
+                isMobile ? 'relative' : 'fixed'
+            } top-0 left-0 w-full ${hiImAbsolute && !isMobile ? 'gap-5' : ''}`}
             initial={{ justifyContent: 'center', alignItems: 'center' }}
         >
             <motion.div
-                className="flex flex-col "
+                className="flex flex-col px-4"
                 style={isMobile ? {} : { x: nameX }}
                 ref={heroRef}
             >
                 <motion.div
-                    className={`flex items-center ${isMobile ? 'justify-center' : ''}`}
+                    className="flex items-center"
                     style={isMobile ? {} : { gap: gapSpring }}
                 >
-                    <motion.span
-                        className="pointer-events-none bg-clip-text text-start text-5xl md:text-8xl leading-none font-semibold text-neutral-300 inline-block overflow-hidden whitespace-nowrap"
-                        style={
-                            isMobile
-                                ? {}
-                                : { opacity: hiImOpacity, maxWidth: hiImMaxWidth }
-                        }
-                        transition={{ duration: 0.25 }}
-                    >
-                        Hi, I'm
-                    </motion.span>
+                  <motion.span
+    className="pointer-events-none bg-clip-text text-neutral-400 text-start text-5xl md:text-8xl leading-none font-semibold  inline-block overflow-hidden whitespace-nowrap"
+    style={
+        isMobile
+            ? {}
+            : {
+                  opacity: hiImOpacity,
+                  maxWidth: hiImMaxWidth,
+              }
+    }
+>
+    Hi, I'm
+</motion.span>
 
                     <motion.span
-                        className="pointer-events-none bg-gradient-to-b from-gray-800 to-gray-300/80 bg-clip-text text-5xl md:text-8xl leading-none font-semibold text-transparent ml-0"
+                    className="pointer-events-none text-white  text-5xl md:text-8xl leading-[0.9] font-semibold ml-0 tracking-[-0.02em]"
+                        style={{ textShadow: '0 0 40px rgba(156,163,175,0.1)' }}
                         transition={{ duration: 0.6 }}
                     >
                         Chaim
@@ -106,21 +102,26 @@ export default function HeroSection({ isMobile = false }) {
 
                 <motion.p
                     ref={descriptionRef}
-                    className="mt-4 ml-2 text-sm md:text-lg text-gray-300 max-w-3xl"
+                    className="mt-8 ml-1 text-lg md:text-2xl text-grey-400 max-w-2xl font-light tracking-tight leading-relaxed"
                     style={
                         isMobile
                             ? {}
                             : {
                                   opacity: descriptionOpacity,
                                   maxWidth: descriptionMaxWidth,
-                                  position: hiImAbsolute ? 'absolute' : 'relative',
+                                  position: hiImAbsolute
+                                      ? 'absolute'
+                                      : 'relative',
                                   left: hiImAbsolute ? '-10000px' : 0,
                                   pointerEvents: hiImAbsolute ? 'none' : 'auto',
                               }
                     }
                 >
-                    A full-stack developer creating A-Z from first sketch to
-                    launch.
+                    A
+                    <MorphingText
+                        texts={texts}
+                        className="text-primary-600 font-normal italic inline-block align-baseline ml-2 mr-6"
+                    />creating A-Z from first sketch to launch
                 </motion.p>
 
                 <motion.div
@@ -129,27 +130,42 @@ export default function HeroSection({ isMobile = false }) {
                     animate={
                         isMobile
                             ? {}
-                            : { marginTop: hiImAbsolute ? '0px' : '16px' }
+                            : { marginTop: hiImAbsolute ? '0px' : '24px' }
                     }
                 >
-                    <Dock ref={dockRef}>
-                        <DockIcon>
-                            <DynamicIcon
-                                name={'linkedin'}
-                                className="text-neutral-300"
-                            />
+                    <Dock
+                        ref={dockRef}
+                        className="bg-grey-900/40 border-grey-700/40 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+                    >
+                        <DockIcon className="hover:bg-accent-500/10 hover:text-accent-300 transition-all duration-500 ease-out">
+                            <a
+                                href="https://www.linkedin.com/in/haym-mallakh-58216b1b8/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <DynamicIcon
+                                    name={'linkedin'}
+                                    className="text-grey-400 hover:text-grey-100 transition-colors"
+                                />
+                            </a>
                         </DockIcon>
-                        <DockIcon>
-                            <DynamicIcon
-                                name={'github'}
-                                className="text-neutral-300"
-                            />
+                        <DockIcon className="hover:bg-accent-500/10 hover:text-accent-300 transition-all duration-500 ease-out">
+                            <a
+                                href="https://github.com/kaplos"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <DynamicIcon
+                                    name={'github'}
+                                    className="text-grey-400 hover:text-grey-100 transition-colors"
+                                />
+                            </a>
                         </DockIcon>
                     </Dock>
                 </motion.div>
             </motion.div>
 
-            <LightRays />
+            <LightRays className="opacity-40" />
         </motion.section>
     )
 }

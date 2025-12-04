@@ -97,7 +97,20 @@ export default function ProjectLayout() {
   useOutsideClick(ref, () => setActive(null));
 
   return (
-    <div id="projects" >
+    <div id="projects" className="py-20">
+      {/* Sophisticated section header */}
+      <div className="max-w-7xl mx-auto px-6 mb-16">
+        <div className="inline-block">
+          <h2 className=" text-5xl md:text-6xl font-bold text-grey-100 mb-2 tracking-tight">
+            Selected Work
+          </h2>
+          <div className="h-1 w-20 bg-grey-600 rounded-full"></div>
+        </div>
+        <p className="mt-6 text-grey-400 text-lg md:text-xl font-light max-w-2xl">
+          A curated collection of projects showcasing my skills.
+        </p>
+      </div>
+
       <AnimatePresence>
         {active && typeof active === "object" && (
           <motion.div
@@ -132,7 +145,7 @@ export default function ProjectLayout() {
             <motion.div
               layoutId={`card-${active.name}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] bg-neutral-900 h-fit md:max-h-[90%]  flex flex-col  sm:rounded-3xl overflow-hidden">
+              className="w-full max-w-[500px] bg-primary-900/95 h-fit md:max-h-[90%] flex flex-col sm:rounded-3xl overflow-hidden border border-grey-700/40 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
               <motion.div layoutId={`image-${active.name}-${id}`}>
                 <img
                   width={200}
@@ -147,12 +160,12 @@ export default function ProjectLayout() {
                   <div className="">
                     <motion.h3
                       layoutId={`title-${active.name}-${id}`}
-                      className="font-bold text-neutral-200">
+                      className="font-bold text-grey-100">
                       {active.name}
                     </motion.h3>
                     <motion.p
                       layoutId={`description-${active.description}-${id}`}
-                      className="text-neutral-400">
+                      className="text-grey-400">
                       {active.description}
                     </motion.p>
                   </div>
@@ -161,7 +174,7 @@ export default function ProjectLayout() {
                     layoutId={`button-${active.name}-${id}`}
                     href={`/projects/${active.id}`}
                     // target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white">
+                    className="px-4 py-3 text-sm rounded-full font-semibold bg-grey-600 hover:bg-grey-500 text-white transition-colors">
                     {'More Info'}
                   </motion.a>
                 </div>
@@ -171,13 +184,13 @@ export default function ProjectLayout() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-xs md:text-sm lg:text-base max-h-60 md:max-h-96 pb-10 flex flex-col items-start gap-4 overflow-y-auto text-neutral-400 [scrollbar-width:thin] [scrollbar-color:rgba(155,155,155,0.5)_transparent]">
+                    className="text-xs md:text-sm lg:text-base max-h-60 md:max-h-96 pb-10 flex flex-col items-start gap-4 overflow-y-auto text-grey-400 [scrollbar-width:thin] [scrollbar-color:rgba(156,163,175,0.3)_transparent]">
                       {active.more.descriptions.slice(0, 2).map((paragraph, index) => (
                         <p key={index} className="leading-6">
                           {paragraph}
                         </p>
                       ))}
-                      <p className="text-green-400 font-medium mt-2 flex items-center gap-2">
+                      <p className="text-grey-300 font-medium mt-2 flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <circle cx="12" cy="12" r="10"/>
                           <polyline points="12 16 16 12 12 8"/>
@@ -192,42 +205,48 @@ export default function ProjectLayout() {
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="px-2 mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+      <ul className="px-6 mx-auto w-full max-w-7xl relative z-10 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
         {projects.map((card, index) => (
           <motion.div
             layoutId={`card-${card.name}-${id}`}
             key={`card-${card.name}-${id}`}
             onClick={() => setActive(card)}
-            className="relative flex flex-col bg-neutral-950/80 rounded-xl overflow-hidden cursor-pointer group hover:scale-105 transition-transform duration-300 border border-neutral-700/50">
+            className="relative flex flex-col bg-gradient-to-br from-primary-900/50 to-grey-900/50 backdrop-blur-sm rounded-3xl overflow-hidden cursor-pointer group hover:scale-[1.01] transition-all duration-700 ease-out border border-grey-700/30 hover:border-grey-600/50 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
             {/* Image Container */}
-            <motion.div layoutId={`image-${card.name}-${id}`} className="relative h-48 w-full overflow-hidden">
+            <motion.div layoutId={`image-${card.name}-${id}`} className="relative h-56 w-full overflow-hidden">
               <img
                 width={400}
                 height={300}
                 src={card?.more.images[0] || ""}
                 alt={card.name}
-                className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300" />
+                className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" />
               {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-950/30 via-grey-900/20 to-transparent" />
+              
+              {/* Hover overlay (subtle, neutral) */}
+              <div className="absolute inset-0 bg-grey-800/0 group-hover:bg-grey-800/5 transition-all duration-700" />
             </motion.div>
 
             {/* Content Container */}
-            <div className="p-4 flex flex-row justify-between gap-2">
+            <div className="p-6 flex flex-col gap-3">
               <motion.h3
                 layoutId={`title-${card.name}-${id}`}
-                className="font-bold text-lg text-neutral-300">
+                className="font-light text-2xl text-grey-100 tracking-tight leading-tight">
                 {card.name}
               </motion.h3>
-               <div className="flex gap-2">
-                   {card.languages.map((language) => (
-                                <span
-                                    className="bg-gray-800 text-white p-1 rounded-lg hover:scale-125  "
-                                    key={language}
-                                >
-                                    <DynamicIcon name={language} size={30} />
-                                </span>
-                            ))}
-               </div>
+              
+              {/* <p className="text-grey-400 font-light text-base line-clamp-2 leading-relaxed">
+                {card.more.descriptions[0]}
+              </p> */}
+              
+              <div className="mt-auto pt-4">
+                <span className="inline-flex items-center gap-2 text-grey-300 font-light text-sm tracking-wide group-hover:text-grey-100 group-hover:gap-3 transition-all duration-500">
+                  <span>View Project</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </div>
             </div>
           </motion.div>
         ))}

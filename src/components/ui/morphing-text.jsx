@@ -89,11 +89,14 @@ const Texts = ({ texts }) => {
   return (
     <>
       <span
-        className="absolute inset-x-0 top-0 m-auto inline-block w-full"
+        className="absolute left-0 top-0 inline-block whitespace-nowrap"
         ref={text1Ref} />
       <span
-        className="absolute inset-x-0 top-0 m-auto inline-block w-full"
+        className="absolute left-0 top-0 inline-block whitespace-nowrap"
         ref={text2Ref} />
+      <span className="invisible whitespace-nowrap">
+        {texts[0]}
+      </span>
     </>
   );
 }
@@ -121,12 +124,13 @@ export const MorphingText = ({
   texts,
   className,
 }) => (
-  <div
+  <span
     className={cn(
-      "relative mx-auto h-16 w-full max-w-screen-md text-center font-sans text-[40pt] leading-none font-bold [filter:url(#threshold)_blur(0.6px)] md:h-24 lg:text-[6rem]",
+      "relative inline-block align-baseline h-[1.2em] [filter:url(#threshold)_blur(0.6px)]",
       className
     )}>
     <Texts texts={texts} />
     <SvgFilters />
-  </div>
+  </span>
 )
+

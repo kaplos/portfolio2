@@ -1,15 +1,17 @@
-import localFont from "next/font/local";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar";
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata = {
@@ -21,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        className={`${inter.variable} ${playfair.variable} antialiased font-sans`}
       >
         <NavBar />
         {children}

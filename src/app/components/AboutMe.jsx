@@ -1,25 +1,30 @@
-
 export default function AboutMe() {
     return (
-        <section className="min-h-[90vh] flex items-center justify-center " id="about">
-                <div className="items-center justify-center">
-                    <h1 className="text-4xl text-center text-neutral-300 mb-4">
-                        About Me:
-                    </h1>
-                    <div className=" items-center flex flex-col pt-5 text-neutral-300">
-                        <p className="text-lg font-sans text-center px-4 max-w-full">
-                            I’ve built a wide range of projects: web apps, mobile
-                            apps, internal business tools, CRMs, dashboards,
-                            e-commerce features, real-estate utilities, game logic,
-                            and more. A lot of my work includes React, motion-driven
-                            UI, Supabase, Node.js, and custom APIs. Whether it’s
-                            setting up data models, handling real-time updates,
-                            building reliable backend routes, or polishing the
-                            front-end interactions, I try to make every part feel
-                            consistent and well thought out.
-                        </p>
+        <section className="min-h-screen flex items-center px-6 py-10" id="about">
+            <div className="max-w-4xl">
+                <div className="mb-12">
+                    <div className="inline-block">
+                        <h2 className="text-5xl md:text-6xl font-bold text-grey-100 tracking-tight">
+
+                            About
+                        </h2>
+                        <div className="h-1 w-20 bg-grey-600 rounded-full"></div>
                     </div>
                 </div>
+
+                <div className="">
+                  
+                <div className="relative   border-grey-700">
+                        <p className="text-grey-400 text-lg md:text-xl leading-relaxed">
+                            My work spans web applications, mobile experiences, and enterprise tools—from CRMs and dashboards to
+                            e-commerce platforms and real-time utilities. I specialize in React, motion-driven interfaces, and
+                            full-stack development with Node.js and modern APIs.
+                        </p>
+                    </div>
+
+                  
+                </div>
+            </div>
         </section>
     )
 }
