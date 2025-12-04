@@ -1,7 +1,7 @@
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar";
-
+import {GoogleAnalytics} from '@next/third-parties/google'
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -27,6 +27,7 @@ export default function RootLayout({ children }) {
       >
         <NavBar />
         {children}
+        <GoogleAnalytics gaId="G-C781FE5R05"/>
       </body>
     </html>
   );
