@@ -72,14 +72,14 @@ const ContactForm = () => {
                                 <div className="grid gap-4">
                                     <div className="grid gap-2">
                                         <Label
-                                            htmlFor="name"
+                                            htmlFor="from_name"
                                             className="text-grey-200 font-light text-xs tracking-[0.1em] uppercase"
                                         >
                                             Name
                                         </Label>
                                         <Input
-                                            id="name"
-                                            name="name"
+                                            id="from_name"
+                                            name="from_name"
                                             type="text"
                                             placeholder="Your name"
                                             className="bg-primary-800/30 border-grey-700/30 text-white placeholder:text-grey-500/50 focus:border-grey-500 focus:ring-grey-500/20 h-12 text-sm font-light rounded-xl transition-all"
@@ -88,14 +88,14 @@ const ContactForm = () => {
                                     </div>
                                     <div className="grid gap-2">
                                         <Label
-                                            htmlFor="email"
+                                            htmlFor="reply_to"
                                             className="text-grey-200 font-light text-xs tracking-[0.1em] uppercase"
                                         >
                                             Email
                                         </Label>
                                         <Input
-                                            id="email"
-                                            name="email"
+                                            id="reply_to"
+                                            name="reply_to"
                                             type="email"
                                             placeholder="your.email@example.com"
                                             className="bg-grey-800/40 border-grey-700/40 text-white placeholder:text-grey-500/50 focus:border-grey-500 focus:ring-grey-500/20 h-12 text-sm font-light rounded-xl transition-all"
