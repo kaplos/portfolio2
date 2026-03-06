@@ -88,7 +88,7 @@ export default function HeroSection({ isMobile = false }) {
               }
     }
 >
-    Hi, I'm
+    Hi, Were 
 </motion.span>
 
                     <motion.span
@@ -96,7 +96,7 @@ export default function HeroSection({ isMobile = false }) {
                         style={{ textShadow: '0 0 40px rgba(156,163,175,0.1)' }}
                         transition={{ duration: 0.6 }}
                     >
-                        Chaim
+                        Candm inc 
                     </motion.span>
                 </motion.div>
 
@@ -117,7 +117,7 @@ export default function HeroSection({ isMobile = false }) {
                               }
                     }
                 >
-                    A
+                    
                     <MorphingText
                         texts={texts}
                         className="text-primary-600 font-normal italic inline-block align-baseline ml-2 mr-6"
@@ -133,7 +133,7 @@ export default function HeroSection({ isMobile = false }) {
                             : { marginTop: hiImAbsolute ? '0px' : '24px' }
                     }
                 >
-                    <Dock
+                    {/* <Dock
                         ref={dockRef}
                         className="bg-grey-900/40 border-grey-700/40 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
                     >
@@ -161,7 +161,7 @@ export default function HeroSection({ isMobile = false }) {
                                 />
                             </a>
                         </DockIcon>
-                    </Dock>
+                    </Dock> */}
                 </motion.div>
             </motion.div>
 
