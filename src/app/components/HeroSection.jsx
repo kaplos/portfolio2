@@ -96,7 +96,7 @@ export default function HeroSection({ isMobile = false }) {
                         style={{ textShadow: '0 0 40px rgba(156,163,175,0.1)' }}
                         transition={{ duration: 0.6 }}
                     >
-                        Candm inc 
+                        Candm
                     </motion.span>
                 </motion.div>
 
