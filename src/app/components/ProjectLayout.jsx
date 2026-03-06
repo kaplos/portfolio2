@@ -107,7 +107,7 @@ export default function ProjectLayout() {
           <div className="h-1 w-20 bg-grey-600 rounded-full"></div>
         </div>
         <p className="mt-6 text-grey-400 text-lg md:text-xl font-light max-w-2xl">
-          A curated collection of projects showcasing my skills.
+          A curated collection of projects showcasing our skills.
         </p>
       </div>
 
@@ -219,7 +219,8 @@ export default function ProjectLayout() {
                 height={300}
                 src={card?.more.images[0] || ""}
                 alt={card.name}
-                className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" />
+                className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" 
+                />
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-primary-950/30 via-grey-900/20 to-transparent" />
               

@@ -28,26 +28,6 @@
         }
     },
     {
-        "id": 2,
-        "name": "Product Monitor",
-        "description": "A monitor that checks product availability on retail websites",
-        "github": "",
-        "languages": ["js"],
-        "more": {
-            "test": "test",
-            "images": [
-                "/ProductMonitor-main.png",
-                "/ProductMonitor-1.png",
-                "/ProductMonitor-2.png"
-            ],
-            "descriptions": [
-                "Developed a web scraper to monitor product availability on multiple retail websites using api calls.",
-                "Implemented real-time notifications to alert users when a product becomes available.",
-                "Used discord js to send notifications and control the monitor through discord."
-            ]
-        }
-    },
-    {
         "id": 3,
         "name": "Shopify Store Webpage Design",
         "description": "A implementation of a webpage design for a Shopify store",
@@ -98,7 +78,6 @@
             "test": "test",
             "images": ["/echabot_main.png", "/echabot_1.png"],
             "descriptions": [
-                "The data is sensitive so I cannot share the website or code.",
                 "Built an internal business management system using React for the frontend and Supabase for the backend.",
                 "The workflow starts with a business idea, which is turned into a design. Staff can then generate quotes for the design, and once approved, it moves into sample production and sales tracking.",
                 "Business workers can view and manage orders using three methods: a live preview link, an Excel export, or a downloadable PDF.",
@@ -109,6 +88,30 @@
                 "Automated document generation (Excel and PDF) directly from the database, ensuring accuracy and consistency for internal reporting.",
                 "Designed the React frontend to be intuitive for staff, with dynamic forms and dashboards reflecting the current state of each project.",
                 "Worked closely with the business team to refine workflows and ensure the system matched real-world internal processes."
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "name": "Rentoscope",
+        "description": "A Real estate analysis platform for investors",
+        "github": "",
+        "languages": ["schadcn", "tailwind", "react"],
+        "more": {
+            "test": "test",
+            "images": ["/rentoscope_main.png", "/rentoscope_1.png"],
+            "descriptions": [
+                "RentoScope, a data-driven web platform designed to help rental property investors analyze and evaluate real estate investment opportunities more efficiently.",
+                "The platform was built with React for the frontend and Supabase (PostgreSQL) for the backend, enabling a scalable architecture capable of supporting complex investment data and analytics.",
+                "Designed and implemented an interactive investment analysis dashboard that allows users to review property performance metrics, organize potential deals, and compare opportunities in one centralized workspace.",
+                "Architected a relational PostgreSQL database structure to manage properties, financial metrics, saved analyses, user accounts, and investment scenarios while maintaining strong data integrity.",
+                "Implemented secure authentication and row-level security (RLS) through Supabase to ensure user data isolation and secure access across the platform.",
+                "Built dynamic financial modeling tools that allow investors to quickly estimate potential cash flow, expenses, and overall investment performance.",
+                "Designed the platform to consolidate information that investors often manage across multiple spreadsheets, notes, and external tools, improving workflow efficiency and decision-making.",
+                "Developed a responsive and intuitive user interface that simplifies complex real estate data into actionable insights for investors.",
+                "Engineered the system with scalability in mind, allowing future integration of additional analytics, market data, and advanced property evaluation tools.",
+                "Worked closely with stakeholders to ensure the platform addressed real-world investment workflows, focusing on clarity, speed of analysis, and usability for property investors.",
+                "Please visit the website at rentoscope.com to view the full functionality of the site."
             ]
         }
     }

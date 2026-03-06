@@ -24,16 +24,21 @@ export default function Page() {
 
     if (!project) {
         return (
-            <div className="w-full min-h-screen flex items-center justify-center bg-[#101010]">
+            <div className="w-full min-h-screen  flex items-center justify-center bg-[#101010]">
                 <p className="text-white text-xl">Loading...</p>
             </div>
         );
     }
 
     return (
-        <div className="w-full min-h-screen flex flex-col md:flex-row items-start bg-[#101010] gap-8 p-4 md:p-8">
+        <div className="relative w-full min-h-full flex flex-col md:flex-row items-start bg-[#101010] gap-8 p-4 md:p-8">
+            {/* LightRays Background */}
+            <div className="absolute inset-0 z-0">
+                <LightRays className="w-full h-full" />
+            </div>
+
             {/* Image Section */}
-            <div className="flex flex-col w-full md:w-1/2 items-center justify-center py-8">
+            <div className="relative z-10 flex flex-col w-full md:w-1/2 items-center justify-center py-8">
                 <img 
                     src={currentPic} 
                     alt={project?.name} 
@@ -61,7 +66,7 @@ export default function Page() {
             </div>
 
             {/* Details Section */}
-            <div className="flex flex-col w-full md:w-1/2 justify-start py-8">
+            <div className="relative z-10 flex flex-col w-full md:w-1/2 justify-start py-8">
                 <h2 className="text-3xl font-bold text-white mb-6">
                     {project?.name}
                 </h2>
@@ -76,7 +81,6 @@ export default function Page() {
                     ))}
                 </ul>
             </div>
-            <LightRays />
         </div>
     );
 }
